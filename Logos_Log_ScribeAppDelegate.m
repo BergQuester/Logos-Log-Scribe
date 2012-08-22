@@ -13,7 +13,7 @@
 @synthesize window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-	// Insert code here to initialize your application 
+	// Insert code here to initialize your application
 }
 
 -(float)titleBarHeight
@@ -44,7 +44,7 @@
     
     // make sure the window's title bar stays put
     frame.origin.y = frame.origin.y + window.frame.size.height - frame.size.height;
-
+    
     [[window animator] setFrame:frame display:YES];
 }
 
@@ -70,7 +70,7 @@
 	
 	// Dump Console Messages
 	NSTask *dumpConsoleMessages = [[NSTask alloc] init];
-	[dumpConsoleMessages setLaunchPath:@"/usr/bin/syslog"]; 
+	[dumpConsoleMessages setLaunchPath:@"/usr/bin/syslog"];
 	[dumpConsoleMessages setArguments:[NSArray arrayWithObject:@"-C"]];
 	
 	if (error) {
@@ -103,17 +103,17 @@
 	[zipLogs setLaunchPath:@"/usr/bin/tar"];
     
     NSString *fileName = [NSString stringWithFormat:@"LogosLogs %@ %@.gz", NSFullUserName(), [[NSDate date] descriptionWithCalendarFormat:@"%Y%m%d-%H%M%S" timeZone:nil locale:nil]];
-
+    
 	[zipLogs setArguments:[NSArray arrayWithObjects:@"-czf", [desktopPath stringByAppendingPathComponent:fileName], [path lastPathComponent], nil]];
 	[zipLogs setCurrentDirectoryPath:[path stringByDeletingLastPathComponent]];
 	[zipLogs launch];
 }
 
 -(void)packageConsoleMessagesAndLogosLogs
-{    
+{
 	// Create paths
 	NSString *logosLogsDir = [@"~/Library/Application Support/Logos4/Logging" stringByExpandingTildeInPath];
-		
+    
 	// Check and prep path
 	NSString *consoleMessagesPath = [logosLogsDir stringByAppendingPathComponent:@"Console Messages.log"];
 	
@@ -133,7 +133,7 @@
 {
     NSString *tempFilePath = NSTemporaryDirectory();
     tempFilePath = [tempFilePath stringByAppendingPathComponent:@"Console Messages.log"];
-        
+    
     [self dumpConsoleToFileAtPath:tempFilePath];
     [self gzipItemAtPath:tempFilePath];
     [self setErrorString:@""];
