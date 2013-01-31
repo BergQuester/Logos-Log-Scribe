@@ -1,7 +1,7 @@
 Logos-Log-Scribe
 ================
 
-A quick-n-dirty log package maker for Logos4Mac.
+A quick-n-dirty log package maker for Logos4Mac. Wrote this a couple years back. I have updated it to compile with Xcode 4.6 and am open sourcing it.
 
 
 License
